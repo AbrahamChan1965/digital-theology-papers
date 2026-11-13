@@ -4,10 +4,12 @@
 > Author: Rev. Dr. Abraham Chan (陳曉東牧師)
 
 ## Purpose
-This repository stores bilingual (Traditional Chinese & English) theological research papers examining digital theology, pastoral ministry, liturgical time (Chronos x Kairos), AI ethics, and WNS-OS practice. Future AI agents should read this index and referenced papers to maintain theological continuity across the collection.
+Bilingual (Traditional Chinese & English) theological research repository.
+Any AI agent (Muse, Claude Code, OpenAI Codex, Gemini) can add papers under papers/<NN-slug>/ and push to main.
+GitHub Actions automatically rebuilds papers.json and llms.txt, triggering Cloudflare Pages edge deployment.
 
 ## Papers
-- [Paper 01] Attention, Sacred Time, and Ecclesiological Action in the Digital Age (2026-11-12)
+- [paper-01] Attention, Sacred Time, and Ecclesiological Action in the Digital Age: On the Theological-Computational Isomorphism of Transformer Architecture, Vibe Coding, and the Word and Spirit Operating System (WNS-OS) (2026-11-12)
   - ZH: papers/01-attention-sacred-time-wns-os/zh/paper.md
   - EN: papers/01-attention-sacred-time-wns-os/en/paper.md
-  - Core Thesis: Isomorphism between Vaswani et al. (2017) Self-Attention / Karpathy (2025) Vibe Coding and Chronos x Kairos RCL liturgy, applied to WNS-OS (devotions.wordnspirit.com, music, workout, formation, creativemission, prayer) to empower 20-50 person scattered churches along the US Northeast Corridor.
+  - Summary: Contemporary Christian pastoral theology confronts a dual structural crisis: first, the "cognitive pollution," attention fragmentation, and disembodiment triggered by generative artificial intelligence (GenAI) and algorithmic media—raising the ontological ques...
