@@ -1,0 +1,13 @@
+# Digital Theological Paper Collection (Word & Spirit)
+> Canonical URL: https://papers.wordandspirit.com/
+> Repository: https://github.com/AbrahamChan1965/digital-theology-papers
+> Author: Rev. Dr. Abraham Chan (陳曉東牧師)
+
+## Purpose
+This repository stores bilingual (Traditional Chinese & English) theological research papers examining digital theology, pastoral ministry, liturgical time (Chronos x Kairos), AI ethics, and WNS-OS practice. Future AI agents should read this index and referenced papers to maintain theological continuity across the collection.
+
+## Papers
+- [Paper 01] Attention, Sacred Time, and Ecclesiological Action in the Digital Age (2026-11-12)
+  - ZH: papers/01-attention-sacred-time-wns-os/zh/paper.md
+  - EN: papers/01-attention-sacred-time-wns-os/en/paper.md
+  - Core Thesis: Isomorphism between Vaswani et al. (2017) Self-Attention / Karpathy (2025) Vibe Coding and Chronos x Kairos RCL liturgy, applied to WNS-OS (devotions.wordnspirit.com, music, workout, formation, creativemission, prayer) to empower 20-50 person scattered churches along the US Northeast Corridor.
