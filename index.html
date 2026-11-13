@@ -1,128 +1,516 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-Hant">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Digital Theological Paper Collection · Word & Spirit</title>
+  <title>Digital Theological Paper Collection · Word &amp; Spirit</title>
+  <meta name="description" content="A bilingual digital theological journal and pre-press collection exploring digital theology, liturgical time (Chronos × Kairos), AI, and ecclesiological ministry." />
+
+  <!-- Typography: Noto Serif TC, Noto Sans TC & Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+TC:wght@400;500;700&family=Noto+Serif+TC:wght@400;600;700;900&display=swap" rel="stylesheet" />
+
+  <!-- KaTeX for LaTeX Equations -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" />
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+
+  <!-- Marked.js for clean GFM Markdown rendering -->
+  <script src="https://cdn.jsdelivr.net/npm/marked@12.0.2/marked.min.js"></script>
+
+  <!-- Dedicated Print & Paged.js Pre-press Stylesheet -->
+  <link rel="stylesheet" href="print.css" />
+
   <style>
     :root {
       --purple: #551A8B;
+      --purple-soft: rgba(85, 26, 139, 0.06);
       --gold: #D4AF37;
       --bg: #FAFAFA;
-      --card: #FFFFFF;
+      --surface: #FFFFFF;
       --ink: #1A1A1F;
       --muted: #5A5A66;
+      --border: #E4E4EC;
+      --serif: "Noto Serif TC", Georgia, "Times New Roman", serif;
+      --sans: "Inter", "Noto Sans TC", -apple-system, BlinkMacSystemFont, sans-serif;
     }
+
     * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
     body {
-      font-family: "Noto Serif TC", Georgia, serif;
       background: var(--bg);
       color: var(--ink);
-      line-height: 1.75;
+      font-family: var(--serif);
+      line-height: 1.85;
+      -webkit-font-smoothing: antialiased;
     }
-    header {
-      border-bottom: 3px solid var(--gold);
+
+    /* Reading Progress Bar */
+    #progress-bar {
+      position: fixed;
+      top: 0; left: 0;
+      height: 3px;
+      width: 0%;
+      background: linear-gradient(90deg, var(--purple), var(--gold));
+      z-index: 1000;
+      transition: width 0.1s ease-out;
+    }
+
+    /* Top Masthead */
+    .masthead {
       background: var(--purple);
       color: #fff;
-      padding: 3.5rem 1.5rem 2.75rem;
+      border-bottom: 3px solid var(--gold);
+      padding: 1.15rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 500;
     }
-    .wrap { max-width: 920px; margin: 0 auto; }
+    .masthead-inner {
+      max-width: 1320px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    .brand-group { display: flex; flex-direction: column; }
     .eyebrow {
-      font-family: system-ui, sans-serif;
-      font-size: 0.78rem;
+      font-family: var(--sans);
+      font-size: 0.72rem;
       letter-spacing: 0.14em;
       text-transform: uppercase;
       color: var(--gold);
-      margin-bottom: 0.6rem;
+      font-weight: 600;
     }
-    h1 { font-size: 2.1rem; font-weight: 700; line-height: 1.3; }
-    .sub { margin-top: 0.75rem; color: rgba(255,255,255,0.86); font-size: 1rem; }
-    .lang-bar {
+    .brand-title {
+      font-family: var(--serif);
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .controls {
       display: flex;
-      justify-content: flex-end;
-      gap: 0.5rem;
-      margin: 1.5rem auto 0;
-      padding: 0 1.5rem;
-      max-width: 920px;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 0.6rem;
+      font-family: var(--sans);
     }
-    .lang-btn {
-      border: 1px solid var(--purple);
+    .paper-select {
+      background: rgba(255,255,255,0.12);
+      color: #fff;
+      border: 1px solid rgba(255,255,255,0.3);
+      border-radius: 5px;
+      padding: 0.4rem 0.75rem;
+      font-size: 0.85rem;
+      max-width: 280px;
+    }
+    .paper-select option { color: var(--ink); background: #fff; }
+
+    .btn-pill {
+      border: 1px solid rgba(255,255,255,0.4);
+      background: transparent;
+      color: #fff;
+      padding: 0.38rem 0.85rem;
+      border-radius: 5px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+    .btn-pill:hover { background: rgba(255,255,255,0.14); }
+    .btn-pill.active {
+      background: var(--gold);
+      color: #1A1A1F;
+      border-color: var(--gold);
+    }
+    .btn-press {
       background: #fff;
       color: var(--purple);
-      padding: 0.35rem 0.9rem;
-      border-radius: 4px;
-      cursor: pointer;
-      font-weight: 600;
+      border-color: #fff;
     }
-    .lang-btn.active { background: var(--purple); color: #fff; }
-    main { max-width: 920px; margin: 2rem auto 5rem; padding: 0 1.5rem; }
-    .paper-card {
-      background: var(--card);
-      border: 1px solid #E5E5EA;
-      border-left: 4px solid var(--purple);
-      padding: 2rem;
-      border-radius: 6px;
-      margin-bottom: 1.5rem;
+    .btn-press:hover { background: var(--gold); border-color: var(--gold); color: #1A1A1F; }
+
+    /* 3-Column Academic Journal Grid (MIT / Distill / eLife inspired) */
+    .journal-grid {
+      max-width: 1320px;
+      margin: 2.5rem auto 5rem;
+      padding: 0 2rem;
+      display: grid;
+      grid-template-columns: 230px minmax(0, 1fr) 260px;
+      gap: 3rem;
+      align-items: start;
     }
-    .meta {
-      font-family: system-ui, sans-serif;
-      font-size: 0.82rem;
-      color: var(--muted);
-      margin-bottom: 0.5rem;
+
+    /* Left Rail: Sticky TOC */
+    .toc-rail {
+      position: sticky;
+      top: 5.5rem;
+      font-family: var(--sans);
+      border-right: 1px solid var(--border);
+      padding-right: 1.25rem;
     }
-    .paper-card h2 { font-size: 1.35rem; color: var(--purple); margin-bottom: 0.75rem; }
-    .links { display: flex; gap: 1rem; margin-top: 1.25rem; font-family: system-ui, sans-serif; font-size: 0.9rem; }
-    .links a {
-      text-decoration: none;
+    .rail-label {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
       color: var(--purple);
-      border: 1px solid var(--purple);
-      padding: 0.4rem 0.9rem;
-      border-radius: 4px;
+      font-weight: 700;
+      margin-bottom: 0.85rem;
+    }
+    .toc-list { list-style: none; }
+    .toc-list li { margin-bottom: 0.45rem; line-height: 1.4; }
+    .toc-list a {
+      text-decoration: none;
+      color: var(--muted);
+      font-size: 0.83rem;
+      display: block;
+      padding: 0.2rem 0 0.2rem 0.6rem;
+      border-left: 2px solid transparent;
+      transition: all 0.15s;
+    }
+    .toc-list a.sub { padding-left: 1.25rem; font-size: 0.78rem; }
+    .toc-list a:hover, .toc-list a.active {
+      color: var(--purple);
+      border-left-color: var(--gold);
       font-weight: 600;
     }
-    .links a:hover { background: var(--purple); color: #fff; }
+
+    /* Center Column: 68ch Optimal Reading Measure */
+    .article-shell {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-top: 4px solid var(--purple);
+      padding: 3.25rem 3.5rem;
+      border-radius: 6px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.03);
+    }
+    .article-body {
+      max-width: 68ch;
+      margin: 0 auto;
+      font-size: 1.06rem;
+    }
+    .article-body h1 {
+      font-size: 1.95rem;
+      line-height: 1.35;
+      color: var(--purple);
+      font-weight: 900;
+      margin-bottom: 1.25rem;
+    }
+    .article-body h2 {
+      font-size: 1.38rem;
+      color: var(--purple);
+      margin: 2.4rem 0 0.9rem;
+      padding-bottom: 0.35rem;
+      border-bottom: 1px solid var(--border);
+      font-weight: 700;
+    }
+    .article-body h3 {
+      font-size: 1.12rem;
+      color: var(--ink);
+      margin: 1.7rem 0 0.6rem;
+      font-weight: 700;
+    }
+    .article-body p { margin-bottom: 1.15rem; text-align: justify; }
+    .article-body ul, .article-body ol { margin: 0.75rem 0 1.25rem 1.6rem; }
+    .article-body li { margin-bottom: 0.5rem; }
+    .article-body a { color: var(--purple); text-decoration-color: var(--gold); text-underline-offset: 3px; }
+    .article-body a:hover { color: #360d59; }
+    .article-body blockquote {
+      background: var(--purple-soft);
+      border-left: 4px solid var(--purple);
+      padding: 1rem 1.35rem;
+      margin: 1.5rem 0;
+      border-radius: 0 4px 4px 0;
+      font-size: 0.98rem;
+    }
+    .article-body blockquote p:last-child { margin-bottom: 0; }
+    .article-body code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 0.88em;
+      background: #F1F1F5;
+      padding: 0.12rem 0.35rem;
+      border-radius: 3px;
+    }
+    .article-body table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.75rem 0;
+      font-size: 0.9rem;
+      line-height: 1.55;
+    }
+    .article-body th {
+      background: var(--purple);
+      color: #fff;
+      font-family: var(--sans);
+      font-weight: 600;
+      text-align: left;
+      padding: 0.65rem 0.8rem;
+    }
+    .article-body td {
+      padding: 0.65rem 0.8rem;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .article-body tr:nth-child(even) td { background: #FAFAFC; }
+
+    /* Right Rail: Metadata & Citations */
+    .meta-rail {
+      position: sticky;
+      top: 5.5rem;
+      font-family: var(--sans);
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+    .meta-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 1.15rem;
+      font-size: 0.84rem;
+    }
+    .meta-row { margin-bottom: 0.65rem; }
+    .meta-row strong { display: block; font-size: 0.72rem; text-transform: uppercase; color: var(--muted); letter-spacing: 0.06em; }
+    .tag-wrap { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-top: 0.35rem; }
+    .tag {
+      background: var(--purple-soft);
+      color: var(--purple);
+      padding: 0.18rem 0.55rem;
+      border-radius: 3px;
+      font-size: 0.74rem;
+      font-weight: 600;
+    }
+    .cite-btn {
+      width: 100%;
+      margin-top: 0.5rem;
+      padding: 0.45rem 0.7rem;
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--purple);
+      cursor: pointer;
+      text-align: left;
+    }
+    .cite-btn:hover { border-color: var(--purple); background: var(--purple-soft); }
+
+    /* Press Preview Banner (Visible only in Press Mode) */
+    #press-banner {
+      display: none;
+      background: #1A1A1F;
+      color: #fff;
+      padding: 0.75rem 2rem;
+      font-family: var(--sans);
+      font-size: 0.88rem;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 2000;
+      border-bottom: 2px solid var(--gold);
+    }
+    body.press-mode #press-banner { display: flex; }
+    body.press-mode .masthead,
+    body.press-mode .toc-rail,
+    body.press-mode .meta-rail,
+    body.press-mode #progress-bar { display: none !important; }
+
+    /* Responsive Breakpoints */
+    @media (max-width: 1120px) {
+      .journal-grid { grid-template-columns: 200px minmax(0, 1fr); }
+      .meta-rail { display: none; }
+    }
+    @media (max-width: 820px) {
+      .journal-grid { grid-template-columns: 1fr; padding: 0 1rem; }
+      .toc-rail { display: none; }
+      .article-shell { padding: 1.75rem 1.25rem; }
+    }
   </style>
 </head>
 <body>
-  <header>
-    <div class="wrap">
-      <div class="eyebrow">Word &amp; Spirit · papers.wordandspirit.com</div>
-      <h1 id="site-title">Digital Theological Paper Collection</h1>
-      <p class="sub" id="site-sub">Bilingual Research in Digital Theology, Liturgical Time, and Pastoral Ministry</p>
+  <div id="progress-bar"></div>
+
+  <div id="press-banner">
+    <span><strong>6×9" Hardcover Pre-Press Mode</strong> · 3mm Bleed &amp; Crop Marks Active (Paged.js)</span>
+    <div style="display:flex; gap:0.6rem;">
+      <button class="btn-pill active" onclick="window.print()">Print / Save Press PDF (Cmd+P)</button>
+      <button class="btn-pill" onclick="exitPressMode()">Exit Press Preview</button>
+    </div>
+  </div>
+
+  <header class="masthead">
+    <div class="masthead-inner">
+      <div class="brand-group">
+        <span class="eyebrow">Word &amp; Spirit · papers.wordandspirit.com</span>
+        <span class="brand-title" id="site-title">聖言靈禱 · 數字神學思考論文集</span>
+      </div>
+      <div class="controls">
+        <select id="paper-select" class="paper-select" aria-label="Select Paper"></select>
+        <button class="btn-pill active" id="btn-zh" onclick="setLang('zh')">繁體中文</button>
+        <button class="btn-pill" id="btn-en" onclick="setLang('en')">English</button>
+        <button class="btn-pill btn-press" onclick="enterPressMode()">6×9" 印刷打樣 (Bleed)</button>
+      </div>
     </div>
   </header>
-  <div class="lang-bar">
-    <button class="lang-btn active" onclick="setLang('en', this)">English</button>
-    <button class="lang-btn" onclick="setLang('zh', this)">繁體中文</button>
+
+  <div class="journal-grid" id="journal-grid">
+    <aside class="toc-rail">
+      <div class="rail-label" id="toc-label">論文目錄 / Contents</div>
+      <ul class="toc-list" id="toc-list"></ul>
+    </aside>
+
+    <main class="article-shell" id="article-shell">
+      <!-- Dedicated Half-Title / Book Frontmatter (Rendered only in Print / Press Mode) -->
+      <section class="print-frontmatter">
+        <div class="pf-series">WORD &amp; SPIRIT · DIGITAL THEOLOGICAL PAPER COLLECTION</div>
+        <h1 class="pf-title" id="pf-title"></h1>
+        <div class="pf-author">Rev. Dr. Abraham Chan · 陳曉東牧師</div>
+        <div class="pf-meta" id="pf-meta"></div>
+      </section>
+
+      <article class="article-body" id="article-body">
+        <p style="color:var(--muted);">Loading theological paper...</p>
+      </article>
+    </main>
+
+    <aside class="meta-rail">
+      <div class="meta-card">
+        <div class="rail-label">Publication Metadata</div>
+        <div class="meta-row"><strong>Date</strong><span id="meta-date">—</span></div>
+        <div class="meta-row"><strong>Liturgical Context</strong><span id="meta-season">—</span></div>
+        <div class="meta-row"><strong>Keywords</strong><div class="tag-wrap" id="meta-tags"></div></div>
+      </div>
+
+      <div class="meta-card">
+        <div class="rail-label">Cite This Paper</div>
+        <button class="cite-btn" onclick="copyCitation('bibtex')">Copy BibTeX</button>
+        <button class="cite-btn" onclick="copyCitation('chicago')">Copy Chicago Style</button>
+        <a class="cite-btn" id="raw-md-link" href="#" target="_blank" style="display:block; text-decoration:none;">View Source (.md)</a>
+        <div id="copy-toast" style="font-size:0.75rem; color:var(--purple); margin-top:0.5rem; display:none;">Copied to clipboard.</div>
+      </div>
+    </aside>
   </div>
-  <main id="paper-list"></main>
+
   <script>
-    let currentLang = 'en';
-    let papersData = [];
-    function setLang(lang, btn) {
+    let papers = [];
+    let currentPaper = null;
+    let currentLang = 'zh';
+
+    async function init() {
+      const res = await fetch('papers.json');
+      const data = await res.json();
+      papers = data.papers || [];
+      const select = document.getElementById('paper-select');
+      select.innerHTML = papers.map((p, idx) =>
+        `<option value="${idx}">${p.date} · ${p.title_zh.slice(0, 22)}...</option>`
+      ).join('');
+      select.addEventListener('change', (e) => loadPaper(parseInt(e.target.value, 10)));
+      if (papers.length > 0) loadPaper(0);
+    }
+
+    function setLang(lang) {
       currentLang = lang;
-      document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
+      document.getElementById('btn-zh').classList.toggle('active', lang === 'zh');
+      document.getElementById('btn-en').classList.toggle('active', lang === 'en');
       document.getElementById('site-title').textContent =
         lang === 'zh' ? '聖言靈禱 · 數字神學思考論文集' : 'Digital Theological Paper Collection';
-      document.getElementById('site-sub').textContent =
-        lang === 'zh' ? '當代數字神學、禮儀時間與教會論牧養行動研究' : 'Bilingual Research in Digital Theology, Liturgical Time, and Pastoral Ministry';
-      render();
+      document.getElementById('toc-label').textContent =
+        lang === 'zh' ? '論文目錄 / Contents' : 'Contents';
+      if (currentPaper) renderCurrentPaper();
     }
-    function render() {
-      const container = document.getElementById('paper-list');
-      container.innerHTML = papersData.map(p => `
-        <article class="paper-card">
-          <div class="meta">${p.date} · ${p.liturgical_context}</div>
-          <h2>${currentLang === 'zh' ? p.title_zh : p.title_en}</h2>
-          <div class="links">
-            <a href="${p.en_path}">Read English (.md)</a>
-            <a href="${p.zh_path}">閱讀中文 (.md)</a>
-          </div>
-        </article>
-      `).join('');
+
+    async function loadPaper(idx) {
+      currentPaper = papers[idx];
+      await renderCurrentPaper();
     }
-    fetch('papers.json').then(r => r.json()).then(d => { papersData = d.papers; render(); });
+
+    async function renderCurrentPaper() {
+      const path = currentLang === 'zh' ? currentPaper.zh_path : currentPaper.en_path;
+      const res = await fetch(path);
+      const md = await res.text();
+
+      document.getElementById('article-body').innerHTML = marked.parse(md);
+      document.getElementById('meta-date').textContent = currentPaper.date;
+      document.getElementById('meta-season').textContent = currentPaper.liturgical_context;
+      document.getElementById('meta-tags').innerHTML =
+        (currentPaper.tags || []).map(t => `<span class="tag">${t}</span>`).join('');
+      document.getElementById('raw-md-link').href = path;
+
+      document.getElementById('pf-title').textContent =
+        currentLang === 'zh' ? currentPaper.title_zh : currentPaper.title_en;
+      document.getElementById('pf-meta').textContent =
+        `${currentPaper.date} · ${currentPaper.liturgical_context} · papers.wordandspirit.com`;
+
+      if (window.renderMathInElement) {
+        renderMathInElement(document.getElementById('article-body'), {
+          delimiters: [
+            { left: '$$', right: '$$', display: true },
+            { left: '$', right: '$', display: false }
+          ],
+          throwOnError: false
+        });
+      }
+      buildTOC();
+    }
+
+    function buildTOC() {
+      const headings = document.querySelectorAll('#article-body h2, #article-body h3');
+      const list = document.getElementById('toc-list');
+      list.innerHTML = '';
+      headings.forEach((h, i) => {
+        const id = 'sec-' + i;
+        h.id = id;
+        const li = document.createElement('li');
+        const a = document.createElement('a');
+        a.href = '#' + id;
+        a.textContent = h.textContent;
+        if (h.tagName === 'H3') a.classList.add('sub');
+        li.appendChild(a);
+        list.appendChild(li);
+      });
+    }
+
+    function copyCitation(format) {
+      if (!currentPaper) return;
+      const title = currentLang === 'zh' ? currentPaper.title_zh : currentPaper.title_en;
+      const year = currentPaper.date.slice(0, 4);
+      let text = '';
+      if (format === 'bibtex') {
+        text = `@article{chan${year}_${currentPaper.id.replace('-','')},\n  author = {Chan, Abraham},\n  title = {${title}},\n  journal = {Word and Spirit Digital Theological Paper Collection},\n  year = {${year}},\n  url = {https://papers.wordandspirit.com/}\n}`;
+      } else {
+        text = `Chan, Abraham. "${title}." Word and Spirit Digital Theological Paper Collection, ${currentPaper.date}. https://papers.wordandspirit.com/.`;
+      }
+      navigator.clipboard.writeText(text);
+      const toast = document.getElementById('copy-toast');
+      toast.style.display = 'block';
+      setTimeout(() => toast.style.display = 'none', 2200);
+    }
+
+    function enterPressMode() {
+      document.body.classList.add('press-mode');
+      if (!window.PagedPolyfill) {
+        const s = document.createElement('script');
+        s.src = 'https://unpkg.com/pagedjs/dist/paged.polyfill.js';
+        document.head.appendChild(s);
+      }
+    }
+
+    function exitPressMode() {
+      window.location.reload();
+    }
+
+    window.addEventListener('scroll', () => {
+      const doc = document.documentElement;
+      const pct = (doc.scrollTop / (doc.scrollHeight - doc.clientHeight)) * 100;
+      document.getElementById('progress-bar').style.width = Math.min(100, Math.max(0, pct)) + '%';
+    });
+
+    init();
   </script>
 </body>
 </html>

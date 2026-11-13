@@ -1,0 +1,132 @@
+/* ==========================================================================
+   Word & Spirit Digital Theological Journal — Pre-Press Print Stylesheet
+   6in × 9in Hardcover Book Trim | 3mm Bleed | Crop & Registration Marks
+   ========================================================================== */
+
+.print-frontmatter {
+  display: none;
+}
+
+@page {
+  size: 6in 9in;
+  bleed: 3mm;
+  marks: crop cross;
+  margin-top: 20mm;
+  margin-bottom: 22mm;
+
+  @bottom-center {
+    content: counter(page);
+    font-family: "Noto Serif TC", Georgia, serif;
+    font-size: 9pt;
+    color: #5A5A66;
+  }
+}
+
+/* Facing Pages (Recto / Verso Binding Gutter) */
+@page :left {
+  margin-left: 16mm;
+  margin-right: 22mm;
+  @top-left {
+    content: "WORD & SPIRIT · DIGITAL THEOLOGICAL COLLECTION";
+    font-family: "Inter", "Noto Sans TC", sans-serif;
+    font-size: 7pt;
+    letter-spacing: 0.08em;
+    color: #551A8B;
+  }
+}
+
+@page :right {
+  margin-left: 22mm;
+  margin-right: 16mm;
+  @top-right {
+    content: "papers.wordandspirit.com";
+    font-family: "Inter", "Noto Sans TC", sans-serif;
+    font-size: 7pt;
+    letter-spacing: 0.08em;
+    color: #5A5A66;
+  }
+}
+
+@page :first {
+  @top-left { content: none; }
+  @top-right { content: none; }
+  @bottom-center { content: none; }
+}
+
+/* Active in Press Preview & Physical Printing */
+@media print, screen {
+  body.press-mode .journal-grid,
+  body.press-mode .article-shell {
+    display: block !important;
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+    background: #fff !important;
+  }
+
+  body.press-mode .print-frontmatter {
+    display: block;
+    page-break-after: always;
+    padding-top: 38mm;
+    border-top: 3pt solid #551A8B;
+  }
+
+  body.press-mode .pf-series {
+    font-family: "Inter", "Noto Sans TC", sans-serif;
+    font-size: 8pt;
+    letter-spacing: 0.14em;
+    color: #D4AF37;
+    font-weight: 700;
+    margin-bottom: 8mm;
+  }
+
+  body.press-mode .pf-title {
+    font-size: 20pt;
+    line-height: 1.35;
+    color: #551A8B;
+    font-weight: 900;
+    margin-bottom: 10mm;
+  }
+
+  body.press-mode .pf-author {
+    font-size: 11pt;
+    font-weight: 700;
+    color: #1A1A1F;
+    margin-bottom: 3mm;
+  }
+
+  body.press-mode .pf-meta {
+    font-size: 9pt;
+    color: #5A5A66;
+  }
+
+  body.press-mode .article-body {
+    max-width: none !important;
+    font-size: 10pt !important;
+    line-height: 1.65 !important;
+  }
+
+  body.press-mode .article-body h1 {
+    display: none; /* Covered by frontmatter title page */
+  }
+
+  body.press-mode .article-body h2 {
+    font-size: 13pt;
+    break-after: avoid;
+    page-break-after: avoid;
+  }
+
+  body.press-mode .article-body table,
+  body.press-mode .article-body blockquote {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+}
+
+@media print {
+  #press-banner, .masthead, .toc-rail, .meta-rail, #progress-bar {
+    display: none !important;
+  }
+}
