@@ -59,6 +59,19 @@
         "Spiritual Direction",
         "Covenantal Accountability"
       ]
+    },
+    {
+      "id": "paper-04",
+      "slug": "04-jensen-huang-male-crisis-patristic-restoration",
+      "date": "2026-11-12",
+      "liturgical_context": "Ordinary Time / RCL",
+      "title_zh": "失灵的刹车、双面面具与荒漠中的解罪：从神经科学、体育科学、后设心理学与古典灵修学论40–70岁亚裔精英男性的危机与全人修复",
+      "title_en": "Integrative Inquiry into the Crisis and Holistic Restoration of Asian Male Elites Aged 40–70: Neuroscience, Exercise Science, Meta-Psychology, and Patristic Spiritual Direction",
+      "zh_path": "papers/04-jensen-huang-male-crisis-patristic-restoration/zh/paper.md",
+      "en_path": "papers/04-jensen-huang-male-crisis-patristic-restoration/en/paper.md",
+      "tags": [
+        "Digital Theology"
+      ]
     }
   ]
 }

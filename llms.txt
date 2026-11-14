@@ -20,3 +20,6 @@ GitHub Actions automatically rebuilds papers.json and llms.txt, triggering Cloud
   - ZH: papers/03-forming-the-responsible-vibe-coder/zh/paper.md
   - EN: papers/03-forming-the-responsible-vibe-coder/en/paper.md
   - Summary: As "Vibe Coding" evolves from a niche developer workflow into a universal foundational competence and a distinct new vocation (*Vibe Coder*), future learners will begin issuing natural-language commands to massive intelligent agents as early as kindergarten. O...
+- [paper-04] Integrative Inquiry into the Crisis and Holistic Restoration of Asian Male Elites Aged 40–70: Neuroscience, Exercise Science, Meta-Psychology, and Patristic Spiritual Direction (2026-11-12)
+  - ZH: papers/04-jensen-huang-male-crisis-patristic-restoration/zh/paper.md
+  - EN: papers/04-jensen-huang-male-crisis-patristic-restoration/en/paper.md
