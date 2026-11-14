@@ -1,0 +1,17 @@
+{
+  "id": "paper-02",
+  "slug": "02-pastor-as-vibe-coder-thomas-bayes-rag",
+  "date": "2026-11-13",
+  "liturgical_context": "Year A Proper 27 -> Year B Advent 1 Preparation",
+  "title_zh": "牧者作為氛圍編碼者（Pastor as a Vibe Coder）：從英格蘭長老會牧師 Thomas Bayes 的機率神學、RAG 防語義漂移到教會「單一真理來源」（SSOT）的牧養辯證",
+  "title_en": "Pastor as a Vibe Coder: From English Presbyterian Minister Thomas Bayes's Probabilistic Theology to RAG Anti-Drift Engineering and the Church's Single Source of Truth (SSOT)",
+  "tags": [
+    "Pastor as Vibe Coder",
+    "Thomas Bayes",
+    "Bayesian Inference",
+    "RAG",
+    "SSOT",
+    "Semantic Drift",
+    "WNS-OS"
+  ]
+}

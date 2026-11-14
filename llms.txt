@@ -13,6 +13,9 @@ GitHub Actions automatically rebuilds papers.json and llms.txt, triggering Cloud
   - ZH: papers/01-attention-sacred-time-wns-os/zh/paper.md
   - EN: papers/01-attention-sacred-time-wns-os/en/paper.md
   - Summary: Contemporary Christian pastoral theology confronts a dual structural crisis: first, the "cognitive pollution," attention fragmentation, and disembodiment triggered by generative artificial intelligence (GenAI) and algorithmic media—raising the ontological ques...
+- [paper-02] Pastor as a Vibe Coder: From English Presbyterian Minister Thomas Bayes's Probabilistic Theology to RAG Anti-Drift Engineering and the Church's Single Source of Truth (SSOT) (2026-11-13)
+  - ZH: papers/02-pastor-as-vibe-coder-thomas-bayes-rag/zh/paper.md
+  - EN: papers/02-pastor-as-vibe-coder-thomas-bayes-rag/en/paper.md
 - [paper-03] Forming the Responsible Vibe Coder: How Five-Dimensional Christian Theology Cultivates Intelligibility, Ethical Thinking, and Spiritual Direction in the Age of Universal Agentic Competence (2026-11-13)
   - ZH: papers/03-forming-the-responsible-vibe-coder/zh/paper.md
   - EN: papers/03-forming-the-responsible-vibe-coder/en/paper.md
