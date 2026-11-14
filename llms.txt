@@ -13,3 +13,7 @@ GitHub Actions automatically rebuilds papers.json and llms.txt, triggering Cloud
   - ZH: papers/01-attention-sacred-time-wns-os/zh/paper.md
   - EN: papers/01-attention-sacred-time-wns-os/en/paper.md
   - Summary: Contemporary Christian pastoral theology confronts a dual structural crisis: first, the "cognitive pollution," attention fragmentation, and disembodiment triggered by generative artificial intelligence (GenAI) and algorithmic media—raising the ontological ques...
+- [paper-03] Forming the Responsible Vibe Coder: How Five-Dimensional Christian Theology Cultivates Intelligibility, Ethical Thinking, and Spiritual Direction in the Age of Universal Agentic Competence (2026-11-13)
+  - ZH: papers/03-forming-the-responsible-vibe-coder/zh/paper.md
+  - EN: papers/03-forming-the-responsible-vibe-coder/en/paper.md
+  - Summary: As "Vibe Coding" evolves from a niche developer workflow into a universal foundational competence and a distinct new vocation (*Vibe Coder*), future learners will begin issuing natural-language commands to massive intelligent agents as early as kindergarten. O...

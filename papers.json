@@ -21,6 +21,25 @@
         "WNS-OS",
         "Ecclesiology"
       ]
+    },
+    {
+      "id": "paper-03",
+      "slug": "03-forming-the-responsible-vibe-coder",
+      "date": "2026-11-13",
+      "liturgical_context": "Year A Proper 27 -> Year B Advent 1 Preparation",
+      "title_zh": "塑造負責任的「氛圍編碼者」：五維神學如何培育 AI 代理時代的可理解性、倫理思辨與屬靈導向",
+      "title_en": "Forming the Responsible Vibe Coder: How Five-Dimensional Christian Theology Cultivates Intelligibility, Ethical Thinking, and Spiritual Direction in the Age of Universal Agentic Competence",
+      "zh_path": "papers/03-forming-the-responsible-vibe-coder/zh/paper.md",
+      "en_path": "papers/03-forming-the-responsible-vibe-coder/en/paper.md",
+      "tags": [
+        "Vibe Coding",
+        "Vocation Education",
+        "Spiritual Formation",
+        "Intelligibility",
+        "Ethical Thinking",
+        "Spiritual Direction",
+        "Covenantal Accountability"
+      ]
     }
   ]
 }
