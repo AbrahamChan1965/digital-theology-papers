@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Digital Theological Paper Collection · Word &amp; Spirit</title>
+  <title>Word &amp; Spirit · Digital Theological Paper Collection</title>
   <meta name="description" content="A bilingual digital theological journal and pre-press collection exploring digital theology, liturgical time (Chronos × Kairos), AI, and ecclesiological ministry." />
 
   <!-- Typography: Noto Serif TC, Noto Sans TC & Inter -->
@@ -76,7 +76,11 @@
       justify-content: space-between;
       gap: 1rem;
     }
-    .brand-group { display: flex; flex-direction: column; }
+    .brand-group {
+      display: flex;
+      flex-direction: column;
+      cursor: pointer;
+    }
     .eyebrow {
       font-family: var(--sans);
       font-size: 0.72rem;
@@ -106,7 +110,7 @@
       border-radius: 5px;
       padding: 0.4rem 0.75rem;
       font-size: 0.85rem;
-      max-width: 280px;
+      max-width: 300px;
     }
     .paper-select option { color: var(--ink); background: #fff; }
 
@@ -134,6 +138,139 @@
     }
     .btn-press:hover { background: var(--gold); border-color: var(--gold); color: #1A1A1F; }
 
+    /* Journal Landing / Catalog View */
+    .catalog-shell {
+      max-width: 980px;
+      margin: 3rem auto 5rem;
+      padding: 0 2rem;
+    }
+    .catalog-hero {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-top: 4px solid var(--purple);
+      border-radius: 6px;
+      padding: 2.5rem 2.75rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.03);
+    }
+    .catalog-kicker {
+      font-family: var(--sans);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.5rem;
+    }
+    .catalog-hero h1 {
+      font-size: 2rem;
+      line-height: 1.35;
+      color: var(--purple);
+      font-weight: 900;
+      margin-bottom: 0.85rem;
+    }
+    .catalog-lead {
+      font-size: 1.02rem;
+      color: var(--muted);
+      max-width: 72ch;
+    }
+    .catalog-toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.85rem;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 1.5rem;
+      font-family: var(--sans);
+    }
+    .catalog-search {
+      flex: 1 1 280px;
+      padding: 0.65rem 1rem;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      background: var(--surface);
+      font-family: var(--sans);
+      font-size: 0.92rem;
+      color: var(--ink);
+    }
+    .catalog-search:focus {
+      outline: none;
+      border-color: var(--purple);
+      box-shadow: 0 0 0 3px var(--purple-soft);
+    }
+    .catalog-count {
+      font-size: 0.84rem;
+      color: var(--muted);
+      font-weight: 600;
+    }
+    .catalog-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+    .paper-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-left: 4px solid var(--purple);
+      border-radius: 6px;
+      padding: 1.65rem 2rem;
+      cursor: pointer;
+      transition: transform 0.14s ease, box-shadow 0.14s ease, border-color 0.14s ease;
+    }
+    .paper-card:hover {
+      transform: translateY(-2px);
+      border-left-color: var(--gold);
+      box-shadow: 0 8px 24px rgba(85, 26, 139, 0.08);
+    }
+    .paper-card-meta {
+      font-family: var(--sans);
+      font-size: 0.78rem;
+      color: var(--muted);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.65rem;
+      align-items: center;
+      margin-bottom: 0.55rem;
+    }
+    .paper-num {
+      background: var(--purple);
+      color: #fff;
+      padding: 0.14rem 0.55rem;
+      border-radius: 3px;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+    .paper-card-title {
+      font-size: 1.28rem;
+      line-height: 1.45;
+      color: var(--ink);
+      font-weight: 700;
+      margin-bottom: 0.85rem;
+    }
+    .paper-card-footer {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem;
+      font-family: var(--sans);
+    }
+    .read-link {
+      font-size: 0.84rem;
+      font-weight: 700;
+      color: var(--purple);
+    }
+    .empty-state {
+      background: var(--surface);
+      border: 1px dashed var(--border);
+      border-radius: 6px;
+      padding: 2.5rem;
+      text-align: center;
+      font-family: var(--sans);
+      color: var(--muted);
+    }
+
     /* 3-Column Academic Journal Grid (MIT / Distill / eLife inspired) */
     .journal-grid {
       max-width: 1320px;
@@ -144,6 +281,7 @@
       gap: 3rem;
       align-items: start;
     }
+    .hidden { display: none !important; }
 
     /* Left Rail: Sticky TOC */
     .toc-rail {
@@ -318,6 +456,7 @@
     body.press-mode .masthead,
     body.press-mode .toc-rail,
     body.press-mode .meta-rail,
+    body.press-mode .catalog-shell,
     body.press-mode #progress-bar { display: none !important; }
 
     /* Responsive Breakpoints */
@@ -327,6 +466,9 @@
     }
     @media (max-width: 820px) {
       .journal-grid { grid-template-columns: 1fr; padding: 0 1rem; }
+      .catalog-shell { padding: 0 1rem; margin-top: 1.75rem; }
+      .catalog-hero { padding: 1.75rem 1.25rem; }
+      .paper-card { padding: 1.25rem 1.15rem; }
       .toc-rail { display: none; }
       .article-shell { padding: 1.75rem 1.25rem; }
     }
@@ -345,20 +487,42 @@
 
   <header class="masthead">
     <div class="masthead-inner">
-      <div class="brand-group">
+      <div class="brand-group" onclick="showCatalog()" title="Return to Journal Directory">
         <span class="eyebrow">Word &amp; Spirit · papers.wordandspirit.com</span>
         <span class="brand-title" id="site-title">聖言靈禱 · 數字神學思考論文集</span>
       </div>
       <div class="controls">
+        <button class="btn-pill hidden" id="btn-catalog" onclick="showCatalog()">← 返回目錄</button>
         <select id="paper-select" class="paper-select" aria-label="Select Paper"></select>
         <button class="btn-pill active" id="btn-zh" onclick="setLang('zh')">繁體中文</button>
         <button class="btn-pill" id="btn-en" onclick="setLang('en')">English</button>
-        <button class="btn-pill btn-press" onclick="enterPressMode()">6×9" 印刷打樣 (Bleed)</button>
+        <button class="btn-pill btn-press hidden" id="btn-press" onclick="enterPressMode()">6×9" 印刷打樣 (Bleed)</button>
       </div>
     </div>
   </header>
 
-  <div class="journal-grid" id="journal-grid">
+  <!-- Landing Page: Journal Table of Contents / Directory -->
+  <section class="catalog-shell" id="catalog-view">
+    <div class="catalog-hero">
+      <div class="catalog-kicker" id="catalog-kicker">BILINGUAL DIGITAL THEOLOGICAL JOURNAL</div>
+      <h1 id="catalog-heading">聖言靈禱 · 數字神學思考論文集</h1>
+      <p class="catalog-lead" id="catalog-lead">
+        收錄探討人工智慧時代的教會論、禮儀時間觀（Chronos × Kairos）、氛圍編碼（Vibe Coding）與召命教育（Vocation Formation）的雙語研究論文。請瀏覽下方期刊目錄或以關鍵字檢索感興趣的論文。
+      </p>
+    </div>
+
+    <div class="catalog-toolbar">
+      <input type="search" id="catalog-search" class="catalog-search" placeholder="搜尋論文標題、關鍵字或年份..." oninput="renderCatalog()" />
+      <span class="catalog-count" id="catalog-count"></span>
+    </div>
+
+    <div class="catalog-list" id="catalog-list">
+      <div class="empty-state">Loading journal directory...</div>
+    </div>
+  </section>
+
+  <!-- Reader View: 3-Column Academic Paper Layout -->
+  <div class="journal-grid hidden" id="journal-grid">
     <aside class="toc-rail">
       <div class="rail-label" id="toc-label">論文目錄 / Contents</div>
       <ul class="toc-list" id="toc-list"></ul>
@@ -380,16 +544,16 @@
 
     <aside class="meta-rail">
       <div class="meta-card">
-        <div class="rail-label">Publication Metadata</div>
-        <div class="meta-row"><strong>Date</strong><span id="meta-date">—</span></div>
-        <div class="meta-row"><strong>Liturgical Context</strong><span id="meta-season">—</span></div>
-        <div class="meta-row"><strong>Keywords</strong><div class="tag-wrap" id="meta-tags"></div></div>
+        <div class="rail-label" id="meta-heading">Publication Metadata</div>
+        <div class="meta-row"><strong id="lbl-date">Date</strong><span id="meta-date">—</span></div>
+        <div class="meta-row"><strong id="lbl-season">Liturgical Context</strong><span id="meta-season">—</span></div>
+        <div class="meta-row"><strong id="lbl-tags">Keywords</strong><div class="tag-wrap" id="meta-tags"></div></div>
       </div>
 
       <div class="meta-card">
-        <div class="rail-label">Cite This Paper</div>
-        <button class="cite-btn" onclick="copyCitation('bibtex')">Copy BibTeX</button>
-        <button class="cite-btn" onclick="copyCitation('chicago')">Copy Chicago Style</button>
+        <div class="rail-label" id="cite-heading">Cite This Paper</div>
+        <button class="cite-btn" id="btn-bibtex" onclick="copyCitation('bibtex')">Copy BibTeX</button>
+        <button class="cite-btn" id="btn-chicago" onclick="copyCitation('chicago')">Copy Chicago Style</button>
         <a class="cite-btn" id="raw-md-link" href="#" target="_blank" style="display:block; text-decoration:none;">View Source (.md)</a>
         <div id="copy-toast" style="font-size:0.75rem; color:var(--purple); margin-top:0.5rem; display:none;">Copied to clipboard.</div>
       </div>
@@ -398,35 +562,234 @@
 
   <script>
     let papers = [];
+    let currentPaperIndex = -1;
     let currentPaper = null;
     let currentLang = 'zh';
 
+    const UI_TEXT = {
+      zh: {
+        siteTitle: '聖言靈禱 · 數字神學思考論文集',
+        docTitle: '聖言靈禱 · 數字神學思考論文集 | papers.wordandspirit.com',
+        backCatalog: '← 返回期刊目錄',
+        catalogOption: '— 期刊目錄 (Journal Directory) —',
+        pressBtn: '6×9" 印刷打樣 (Bleed)',
+        catalogKicker: '雙語數字神學期刊 · WORD & SPIRIT JOURNAL',
+        catalogHeading: '期刊論文總目錄',
+        catalogLead: '本論文集收錄探討人工智慧時代的教會論、禮儀時間觀（Chronos × Kairos）、氛圍編碼（Vibe Coding）與召命教育（Vocation Formation）的雙語研究論文。請瀏覽下方目錄或輸入關鍵字檢索，點擊任一篇目即可進入閱讀模式。',
+        searchPlaceholder: '搜尋論文標題、關鍵字或日期...',
+        readPaper: '閱讀論文 →',
+        noMatches: '找不到符合關鍵字的論文。',
+        tocLabel: '本篇目錄 / Contents',
+        metaHeading: '發表資訊',
+        lblDate: '發表日期',
+        lblSeason: '教會年曆處境',
+        lblTags: '關鍵字',
+        citeHeading: '學術引用',
+        btnBibtex: '複製 BibTeX 引用',
+        btnChicago: '複製 Chicago 格式',
+        rawMd: '檢視原始檔 (.md)',
+        copied: '已複製到剪貼簿。'
+      },
+      en: {
+        siteTitle: 'Digital Theological Paper Collection',
+        docTitle: 'Digital Theological Paper Collection · Word & Spirit',
+        backCatalog: '← Journal Directory',
+        catalogOption: '— Journal Directory (All Papers) —',
+        pressBtn: '6×9" Press Preview (Bleed)',
+        catalogKicker: 'BILINGUAL DIGITAL THEOLOGICAL JOURNAL · WORD & SPIRIT',
+        catalogHeading: 'Journal Table of Contents',
+        catalogLead: 'A bilingual scholarly collection exploring digital theology, liturgical time (Chronos × Kairos), Vibe Coding, and vocation formation in the age of intelligent agents. Browse the directory or search by title or keyword below to open any paper.',
+        searchPlaceholder: 'Search papers by title, keyword, or date...',
+        readPaper: 'Read Paper →',
+        noMatches: 'No papers match your search query.',
+        tocLabel: 'Article Contents',
+        metaHeading: 'Publication Metadata',
+        lblDate: 'Date',
+        lblSeason: 'Liturgical Context',
+        lblTags: 'Keywords',
+        citeHeading: 'Cite This Paper',
+        btnBibtex: 'Copy BibTeX',
+        btnChicago: 'Copy Chicago Style',
+        rawMd: 'View Source (.md)',
+        copied: 'Copied to clipboard.'
+      }
+    };
+
     async function init() {
+      const params = new URLSearchParams(window.location.search);
+      const urlLang = params.get('lang');
+      const savedLang = localStorage.getItem('wns_papers_lang');
+      if (urlLang === 'en' || urlLang === 'zh') {
+        currentLang = urlLang;
+      } else if (savedLang === 'en' || savedLang === 'zh') {
+        currentLang = savedLang;
+      } else if (navigator.language && !navigator.language.toLowerCase().startsWith('zh')) {
+        currentLang = 'en';
+      }
+
       const res = await fetch('papers.json');
       const data = await res.json();
       papers = data.papers || [];
+
       const select = document.getElementById('paper-select');
-      select.innerHTML = papers.map((p, idx) =>
-        `<option value="${idx}">${p.date} · ${p.title_zh.slice(0, 22)}...</option>`
-      ).join('');
-      select.addEventListener('change', (e) => loadPaper(parseInt(e.target.value, 10)));
-      if (papers.length > 0) loadPaper(0);
+      select.addEventListener('change', (e) => {
+        const val = parseInt(e.target.value, 10);
+        if (val < 0 || Number.isNaN(val)) {
+          showCatalog();
+        } else {
+          loadPaper(val);
+        }
+      });
+
+      applyLanguageUI();
+
+      const paperParam = params.get('paper');
+      if (paperParam) {
+        const idx = papers.findIndex(p => p.slug === paperParam || p.id === paperParam);
+        if (idx >= 0) {
+          await loadPaper(idx);
+          return;
+        }
+      }
+      showCatalog(false);
+    }
+
+    function applyLanguageUI() {
+      const t = UI_TEXT[currentLang];
+      document.documentElement.lang = currentLang === 'zh' ? 'zh-Hant' : 'en';
+      document.title = t.docTitle;
+      document.getElementById('btn-zh').classList.toggle('active', currentLang === 'zh');
+      document.getElementById('btn-en').classList.toggle('active', currentLang === 'en');
+      document.getElementById('site-title').textContent = t.siteTitle;
+      document.getElementById('btn-catalog').textContent = t.backCatalog;
+      document.getElementById('btn-press').textContent = t.pressBtn;
+      document.getElementById('catalog-kicker').textContent = t.catalogKicker;
+      document.getElementById('catalog-heading').textContent = t.catalogHeading;
+      document.getElementById('catalog-lead').textContent = t.catalogLead;
+      document.getElementById('catalog-search').placeholder = t.searchPlaceholder;
+      document.getElementById('toc-label').textContent = t.tocLabel;
+      document.getElementById('meta-heading').textContent = t.metaHeading;
+      document.getElementById('lbl-date').textContent = t.lblDate;
+      document.getElementById('lbl-season').textContent = t.lblSeason;
+      document.getElementById('lbl-tags').textContent = t.lblTags;
+      document.getElementById('cite-heading').textContent = t.citeHeading;
+      document.getElementById('btn-bibtex').textContent = t.btnBibtex;
+      document.getElementById('btn-chicago').textContent = t.btnChicago;
+      document.getElementById('raw-md-link').textContent = t.rawMd;
+      document.getElementById('copy-toast').textContent = t.copied;
+
+      renderPaperSelect();
+      renderCatalog();
+    }
+
+    function renderPaperSelect() {
+      const t = UI_TEXT[currentLang];
+      const select = document.getElementById('paper-select');
+      const options = [`<option value="-1">${t.catalogOption}</option>`];
+      papers.forEach((p, idx) => {
+        const rawTitle = currentLang === 'zh' ? p.title_zh : p.title_en;
+        const maxLen = currentLang === 'zh' ? 24 : 38;
+        const shortTitle = rawTitle.length > maxLen ? rawTitle.slice(0, maxLen) + '...' : rawTitle;
+        options.push(`<option value="${idx}">${p.id.toUpperCase()} · ${shortTitle}</option>`);
+      });
+      select.innerHTML = options.join('');
+      select.value = String(currentPaperIndex);
+    }
+
+    function renderCatalog() {
+      const t = UI_TEXT[currentLang];
+      const query = (document.getElementById('catalog-search').value || '').trim().toLowerCase();
+      const list = document.getElementById('catalog-list');
+
+      // Display newest / highest paper number first in the journal TOC
+      const indexed = papers.map((p, idx) => ({ p, idx })).reverse();
+      const filtered = indexed.filter(({ p }) => {
+        if (!query) return true;
+        const haystack = [
+          p.id,
+          p.date,
+          p.liturgical_context,
+          p.title_zh,
+          p.title_en,
+          ...(p.tags || [])
+        ].join(' ').toLowerCase();
+        return haystack.includes(query);
+      });
+
+      document.getElementById('catalog-count').textContent =
+        currentLang === 'zh'
+          ? `共收錄 ${filtered.length} 篇論文`
+          : `${filtered.length} ${filtered.length === 1 ? 'paper' : 'papers'} listed`;
+
+      if (filtered.length === 0) {
+        list.innerHTML = `<div class="empty-state">${t.noMatches}</div>`;
+        return;
+      }
+
+      list.innerHTML = filtered.map(({ p, idx }) => {
+        const title = currentLang === 'zh' ? p.title_zh : p.title_en;
+        const tagsHtml = (p.tags || []).map(tag => `<span class="tag">${tag}</span>`).join('');
+        return `
+          <article class="paper-card" onclick="loadPaper(${idx})">
+            <div class="paper-card-meta">
+              <span class="paper-num">${p.id}</span>
+              <span>${p.date}</span>
+              <span>·</span>
+              <span>${p.liturgical_context}</span>
+            </div>
+            <h2 class="paper-card-title">${title}</h2>
+            <div class="paper-card-footer">
+              <div class="tag-wrap">${tagsHtml}</div>
+              <span class="read-link">${t.readPaper}</span>
+            </div>
+          </article>
+        `;
+      }).join('');
     }
 
     function setLang(lang) {
       currentLang = lang;
-      document.getElementById('btn-zh').classList.toggle('active', lang === 'zh');
-      document.getElementById('btn-en').classList.toggle('active', lang === 'en');
-      document.getElementById('site-title').textContent =
-        lang === 'zh' ? '聖言靈禱 · 數字神學思考論文集' : 'Digital Theological Paper Collection';
-      document.getElementById('toc-label').textContent =
-        lang === 'zh' ? '論文目錄 / Contents' : 'Contents';
-      if (currentPaper) renderCurrentPaper();
+      localStorage.setItem('wns_papers_lang', lang);
+      syncURL();
+      applyLanguageUI();
+      if (currentPaper && currentPaperIndex >= 0) renderCurrentPaper();
+    }
+
+    function showCatalog(updateHistory = true) {
+      currentPaperIndex = -1;
+      currentPaper = null;
+      document.getElementById('catalog-view').classList.remove('hidden');
+      document.getElementById('journal-grid').classList.add('hidden');
+      document.getElementById('btn-catalog').classList.add('hidden');
+      document.getElementById('btn-press').classList.add('hidden');
+      document.getElementById('paper-select').value = '-1';
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      if (updateHistory) syncURL();
     }
 
     async function loadPaper(idx) {
+      if (idx < 0 || idx >= papers.length) return;
+      currentPaperIndex = idx;
       currentPaper = papers[idx];
+      document.getElementById('catalog-view').classList.add('hidden');
+      document.getElementById('journal-grid').classList.remove('hidden');
+      document.getElementById('btn-catalog').classList.remove('hidden');
+      document.getElementById('btn-press').classList.remove('hidden');
+      document.getElementById('paper-select').value = String(idx);
+      syncURL();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
       await renderCurrentPaper();
+    }
+
+    function syncURL() {
+      const url = new URL(window.location.href);
+      url.searchParams.set('lang', currentLang);
+      if (currentPaper) {
+        url.searchParams.set('paper', currentPaper.slug);
+      } else {
+        url.searchParams.delete('paper');
+      }
+      window.history.replaceState({}, '', url.toString());
     }
 
     async function renderCurrentPaper() {
@@ -479,11 +842,12 @@
       if (!currentPaper) return;
       const title = currentLang === 'zh' ? currentPaper.title_zh : currentPaper.title_en;
       const year = currentPaper.date.slice(0, 4);
+      const paperUrl = `https://papers.wordandspirit.com/?paper=${currentPaper.slug}&lang=${currentLang}`;
       let text = '';
       if (format === 'bibtex') {
-        text = `@article{chan${year}_${currentPaper.id.replace('-','')},\n  author = {Chan, Abraham},\n  title = {${title}},\n  journal = {Word and Spirit Digital Theological Paper Collection},\n  year = {${year}},\n  url = {https://papers.wordandspirit.com/}\n}`;
+        text = `@article{chan${year}_${currentPaper.id.replace('-','')},\n  author = {Chan, Abraham},\n  title = {${title}},\n  journal = {Word and Spirit Digital Theological Paper Collection},\n  year = {${year}},\n  url = {${paperUrl}}\n}`;
       } else {
-        text = `Chan, Abraham. "${title}." Word and Spirit Digital Theological Paper Collection, ${currentPaper.date}. https://papers.wordandspirit.com/.`;
+        text = `Chan, Abraham. "${title}." Word and Spirit Digital Theological Paper Collection, ${currentPaper.date}. ${paperUrl}.`;
       }
       navigator.clipboard.writeText(text);
       const toast = document.getElementById('copy-toast');
@@ -506,7 +870,8 @@
 
     window.addEventListener('scroll', () => {
       const doc = document.documentElement;
-      const pct = (doc.scrollTop / (doc.scrollHeight - doc.clientHeight)) * 100;
+      const denom = doc.scrollHeight - doc.clientHeight;
+      const pct = denom > 0 ? (doc.scrollTop / denom) * 100 : 0;
       document.getElementById('progress-bar').style.width = Math.min(100, Math.max(0, pct)) + '%';
     });
 
